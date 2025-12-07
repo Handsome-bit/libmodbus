@@ -411,6 +411,7 @@ int _modbus_receive_msg(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type)
         p_tv = &tv;
     }
 
+    modbus_flush(ctx);
     while (length_to_read != 0) {
         rc = ctx->backend->select(ctx, &rset, p_tv, length_to_read);
         if (rc == -1) {
